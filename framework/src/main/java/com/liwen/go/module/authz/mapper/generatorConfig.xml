@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- classPathEntry:数据库的JDBC驱动 -->
+	<classPathEntry
+		location="D:/devForEclipse/eclipse/lib/mysql-connector-java-5.1.7-bin.jar" />
+	<context id="mysqlTable" targetRuntime="MyBatis3">
+		<!-- 去除自动生成的注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/framework" userId="root"
+			password="root">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!-- 生成的model对象放在项目的哪个包下 -->
+		<javaModelGenerator targetPackage="com.liwen.go.module.authz.pojo"
+			targetProject="framework\src\main\java">
+			<property name="enableSubPackages" value="false" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- 生成的mapperXML文件放在项目的哪个包下 -->
+		<sqlMapGenerator targetPackage="com.liwen.go.module.authz.dao"
+			targetProject="framework\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!-- 生成的mapper对象放在项目的哪个包下 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.liwen.go.module.authz.dao" 
+			targetProject="framework\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<!-- tableName:用于生成代码的数据库的表名；domainObjectName:数据库表对应的javaBean类名 -->
+		<table tableName="sys_users" domainObjectName="User">
+		</table>
+	</context>
+</generatorConfiguration>
