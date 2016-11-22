@@ -1,4 +1,4 @@
-package com.liwen.go.module.authz.dao;
+package com.liwen.go.module.authz.mapper;
 
 import java.util.Set;
 
@@ -8,7 +8,7 @@ import com.liwen.go.module.authz.bean.User;
 
 public interface UserMapper {
 
-	public User createUser(User user);
+	public Long createUser(User user);
 
 	public void updateUser(User user);
 

@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/includes/jspHead"%>
+<%@ include file="/WEB-INF/includes/jspFragmentHead"%>
 <title>Full Calendar - Ace Admin</title>
 
 <link rel="stylesheet" href="<%=assetsDir %>/css/jquery-ui.custom.css" />

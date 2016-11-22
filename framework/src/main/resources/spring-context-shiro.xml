@@ -23,7 +23,7 @@
 
 	<!-- Realm实现 -->
 	<bean id="userRealm" class="com.liwen.go.module.authz.realm.UserRealm">
-		<property name="userService" ref="userService" />
+		<property name="userService" ref="userServiceImpl" />
 		<property name="credentialsMatcher" ref="credentialsMatcher" />
 		<property name="cachingEnabled" value="true" />
 		<property name="authenticationCachingEnabled" value="true" />
@@ -85,17 +85,24 @@
 	</bean>
 
 	<!-- 基于Form表单的身份验证过滤器 -->
-	<bean id="formAuthenticationFilter"
+	<!-- <bean id="formAuthenticationFilter"
 		class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
 		<property name="usernameParam" value="username" />
 		<property name="passwordParam" value="password" />
-		<property name="loginUrl" value="/login.jsp" />
+		<property name="successUrl" value="/views/layout/main.jsp"></property>
+	</bean> -->
+	<!-- 基于Form表单的身份验证过滤器 -->
+	<bean id="formAuthenticationFilter"
+		class="com.liwen.go.module.authz.filter.MyFormAuthenticationFilter">
+		<property name="usernameParam" value="username" />
+		<property name="passwordParam" value="password" />
+		<property name="successUrl" value="/views/layout/main.jsp"></property>
 	</bean>
 
 	<!-- Shiro的Web过滤器 -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/login.jsp" />
+		<property name="loginUrl" value="/views/page/login.jsp" />
 		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
 		<property name="filters">
 			<util:map>
@@ -104,13 +111,12 @@
 		</property>
 		<property name="filterChainDefinitions">
 			<value>
-			    /** = anon
-				<!-- /static/** = anon
+				/views/page/login.jsp = authc
+				/static/** = anon
 				/index.jsp = anon
 				/unauthorized.jsp = anon
-				/login.jsp = authc
 				/logout = logout
-				/** = user -->
+				/** = user
 			</value>
 		</property>
 	</bean>

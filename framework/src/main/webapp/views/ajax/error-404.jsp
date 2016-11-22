@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/includes/jspHead"%>
+<%@ include file="/WEB-INF/includes/jspFragmentHead"%>
 
 
 <title><spring:message code="error.404.title" /></title>

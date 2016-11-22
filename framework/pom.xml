@@ -206,7 +206,7 @@
 		<resources>
 			<!-- 资源 -->
 			<resource>
-				<directory>${project.basedir}/src/main/resouces</directory>
+				<directory>${project.basedir}/src/main/resources</directory>
 				<includes>
 					<include>*</include>
 					<include>**/*</include>
@@ -236,7 +236,7 @@
 		</resources>
 		<testResources>
 			<testResource>
-				<directory>${project.basedir}/src/test/resouces</directory>
+				<directory>${project.basedir}/src/test/resources</directory>
 				<includes>
 					<include>*</include>
 					<include>**/*</include>
@@ -349,7 +349,7 @@
 		<profile>
 			<id>demo</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
 				<resource.circumstances>${project.basedir}/src/main/resources_demo</resource.circumstances>

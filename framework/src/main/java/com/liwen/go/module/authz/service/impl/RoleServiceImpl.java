@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.liwen.go.module.authz.bean.Role;
-import com.liwen.go.module.authz.dao.RoleMapper;
+import com.liwen.go.module.authz.mapper.RoleMapper;
 import com.liwen.go.module.authz.service.RoleService;
 
-@Service("roleService")
+@Service
 public class RoleServiceImpl implements RoleService {
 
 	@Autowired
@@ -15,7 +15,8 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public Role createRole(Role role) {
-		return roleMapper.createRole(role);
+		roleMapper.createRole(role);
+		return role;
 	}
 
 	@Override

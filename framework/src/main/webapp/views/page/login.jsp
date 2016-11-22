@@ -1,8 +1,8 @@
-<%@ include file="/WEB-INF/includes/jspHead"%>
-
+<%@ include file="/WEB-INF/includes/jspWholeHead"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
+		<base href="<%=basepath %>"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
 		
@@ -65,18 +65,18 @@
 											</h4>
 											<div class="space-6"></div>
 
-											<form>
+											<form id="login-form" action="./views/page/login.jsp" method="post">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="<spring:message code="login.username.placeholder"/>" />
+															<input type="text" class="form-control" name="username" data-required placeholder="<spring:message code="login.username.placeholder"/>" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="<spring:message code="login.password.placeholder"/>" />
+															<input type="password" class="form-control" name="password" data-required placeholder="<spring:message code="login.password.placeholder"/>" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
@@ -85,11 +85,11 @@
 
 													<div class="clearfix">
 														<label class="inline">
-															<input type="checkbox" class="ace" />
+															<input type="checkbox" name="rememberMe" class="ace" />
 															<span class="lbl"> <spring:message code="login.rememberMe"/></span>
 														</label>
 
-														<button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110"><spring:message code="login.button.login"/></span>
 														</button>
@@ -291,6 +291,7 @@
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='<%=assetsDir %>/js/jquery.mobile.custom.js'>"+"<"+"/script>");
 		</script>
+		<script type="text/javascript" src="<%=assetsDir %>/js/jquery-validate.js"></script>
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
@@ -303,7 +304,20 @@
 			 });
 			});
 			
-			
+			jQuery(function($){
+				$('#login-form').validate({
+					onChange : true,
+					onBlur : true,
+					onKeyup : true,
+					onSubmit : true,
+					eachValidField : function() {
+						$(this).closest('label').removeClass('has-error').addClass('has-success');
+					},
+					eachInvalidField : function() {
+						$(this).closest('label').removeClass('has-success').addClass('has-error');
+					}
+				});
+			});
 			
 			//you don't need this, just used for changing background
 			jQuery(function($) {

@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.liwen.go.module.authz.bean.Permission;
-import com.liwen.go.module.authz.dao.PermissionMapper;
+import com.liwen.go.module.authz.mapper.PermissionMapper;
 import com.liwen.go.module.authz.service.PermissionService;
 
-@Service("permissionService")
+@Service
 public class PermissionServiceImpl implements PermissionService {
 
 	@Autowired
@@ -15,7 +15,8 @@ public class PermissionServiceImpl implements PermissionService {
 
 	@Override
 	public Permission createPermission(Permission permission) {
-		return permissionMapper.createPermission(permission);
+		permissionMapper.createPermission(permission);
+		return permission;
 	}
 
 	@Override

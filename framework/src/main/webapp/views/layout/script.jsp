@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/includes/jspHead"%>
+<%@ include file="/WEB-INF/includes/jspFragmentHead"%>
 <!--[if !IE]> -->
 <script type="text/javascript">
 	window.jQuery || document.write("<script src='<%=assetsDir %>/js/jquery.js'>" + "<"+"/script>");

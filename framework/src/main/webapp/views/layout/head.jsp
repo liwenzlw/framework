@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/includes/jspHead" %>
+<%@ include file="/WEB-INF/includes/jspFragmentHead" %>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 

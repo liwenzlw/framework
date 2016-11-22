@@ -6,20 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.liwen.go.module.authz.bean.User;
-import com.liwen.go.module.authz.dao.UserMapper;
+import com.liwen.go.module.authz.helper.PasswordHelper;
+import com.liwen.go.module.authz.mapper.UserMapper;
 import com.liwen.go.module.authz.service.UserService;
 
-@Service("userService")
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserMapper userMapper;
+	
+	@Autowired
+	private PasswordHelper passwordHelper;
 
 	@Override
 	public User createUser(User user) {
-		return userMapper.createUser(user);
+		//加密密码
+        passwordHelper.encryptPassword(user);
+        userMapper.createUser(user);
+		return user;
 	}
-
+	
 	@Override
 	public void changePassword(Long userId, String newPassword) {
 		User user = userMapper.findOne(userId);

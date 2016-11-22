@@ -1,11 +1,11 @@
-package com.liwen.go.module.authz.dao;
+package com.liwen.go.module.authz.mapper;
 
 import org.apache.ibatis.annotations.Param;
 
 import com.liwen.go.module.authz.bean.Role;
 
 public interface RoleMapper {
-	public Role createRole(Role role);
+	public Long createRole(Role role);
 
 	public void deleteRole(Long roleId);
 

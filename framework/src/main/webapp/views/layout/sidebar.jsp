@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/includes/jspHead"%>
+<%@ include file="/WEB-INF/includes/jspFragmentHead"%>
 <script type="text/javascript">
 	try {
 		ace.settings.check('sidebar', 'fixed')
@@ -38,14 +38,14 @@
 <%-- #菜单列表 --%>
 <ul class="nav nav-list">
 	<li class="">
-		<a data-url="page/index" href="#page/index"> 
+		<a data-url="page/index" href="views/layout/main.jsp#page/index"> 
 			<i class="menu-icon fa fa-tachometer"></i> 
 			<span class="menu-text"> Dashboard </span>
 		</a>
 		<b class="arrow"></b>
 	</li>
 	<li class="">
-		<a data-url="page/calendar" href="#page/calendar"> 
+		<a data-url="page/calendar" href="views/layout/main.jsp#page/calendar"> 
 			<i class="menu-icon fa fa-calendar"></i> 
 			<span class="menu-text">
 				Calendar 
@@ -77,25 +77,25 @@
 		<b class="arrow"></b>
 		<ul class="submenu">
 			<li class="">
-				<a data-url="page/faq" href="#page/faq"> 
+				<a data-url="page/faq" href="views/layout/main.jsp#page/faq"> 
 					<i class="menu-icon fa fa-caret-right"></i> <spring:message code="sidebar.otherPages.faq"/>
 				</a> 
 				<b class="arrow"></b>
 			</li>
 			<li class="">
-				<a data-url="page/error-404" href="#page/error-404"> 
+				<a data-url="page/error-404" href="views/layout/main.jsp#page/error-404"> 
 					<i class="menu-icon fa fa-caret-right"></i> <spring:message code="sidebar.otherPages.error404"/>
 				</a> 
 				<b class="arrow"></b>
 			</li>
 			<li class="">
-				<a data-url="page/error-500" href="#page/error-500"> 
+				<a data-url="page/error-500" href="views/layout/main.jsp#page/error-500"> 
 					<i class="menu-icon fa fa-caret-right"></i> <spring:message code="sidebar.otherPages.error500"/>
 				</a> 
 				<b class="arrow"></b>
 			</li>
 			<li class="">
-				<a data-url="page/blank" href="#page/blank">
+				<a data-url="page/blank" href="views/layout/main.jsp#page/blank">
 					<i class="menu-icon fa fa-caret-right"></i> <spring:message code="sidebar.otherPages.blankPage"/>
 				</a> 
 				<b class="arrow"></b>

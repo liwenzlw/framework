@@ -1,7 +1,8 @@
-<%@ include file="/WEB-INF/includes/jspHead"%>
+<%@ include file="/WEB-INF/includes/jspWholeHead"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<base href="<%=basepath %>"/>
 <jsp:include page="./head.jsp" />
 </head>
 

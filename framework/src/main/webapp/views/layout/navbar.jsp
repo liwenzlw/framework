@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/includes/jspHead" %>
+<%@ include file="/WEB-INF/includes/jspWholeHead" %>
 <script type="text/javascript">
 	try {
 		ace.settings.check('navbar', 'fixed')
@@ -263,21 +263,24 @@
 				<a data-toggle="dropdown" href="#" class="dropdown-toggle"> 
 					<img class="nav-user-photo" src="<%=assetsDir %>/avatars/user.jpg" alt="Jason's Photo" /> 
 					<span class="user-info">
-						 <small>Welcome,</small> Jason
+					<small><spring:message code="navbar.welcome"/></small> 
+					<shiro:user>
+						<shiro:principal/>
+					</shiro:user>
 					</span> 
 					<i class="ace-icon fa fa-caret-down"></i>
 				</a>
 				<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 					<li>
-						<a href="#"><i class="ace-icon fa fa-cog"></i> Settings</a>
+						<a href="#"><i class="ace-icon fa fa-cog"></i> <spring:message code="navbar.settings"/></a>
 					</li>
 					<li>
-						<a href="profile.html"> <i class="ace-icon fa fa-user"></i> Profile</a>
+						<a href="profile.html"> <i class="ace-icon fa fa-user"></i> <spring:message code="navbar.profile"/></a>
 					</li>
 					<li class="divider">
 					</li>
 					<li>
-						<a href="#"> <i class="ace-icon fa fa-power-off"></i> Logout</a>
+						<a href="#"> <i class="ace-icon fa fa-power-off"></i> <spring:message code="navbar.logout"/></a>
 					</li>
 				</ul></li>
 

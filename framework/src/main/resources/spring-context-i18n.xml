@@ -16,6 +16,7 @@
 				<value>i18n/error404</value>
 				<value>i18n/error500</value>
 				<value>i18n/sidebar</value>
+				<value>i18n/navbar</value>
 			</list>
 		</property>
 	</bean>

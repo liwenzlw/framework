@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/includes/jspHead"%>
+<%@ include file="/WEB-INF/includes/jspFragmentHead"%>
 <title>FAQ - Ace Admin</title>
 
 <!-- ajax layout which only needs content area -->
