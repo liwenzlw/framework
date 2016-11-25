@@ -11,8 +11,11 @@
 		<config>src/main/resources/spring-context-datasource.xml</config>
 		<config>src/main/resources/spring-context-mybatis.xml</config>
 		<config>src/main/resources/spring-mvc.xml</config>
+		<config>src/main/resources/spring-context-jsr303.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/spring-context-i18n.xml</config>
+		<config>src/main/resources/spring-context-shiro.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
