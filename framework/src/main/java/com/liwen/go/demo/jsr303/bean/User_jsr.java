@@ -1,4 +1,4 @@
-package com.liwen.go.module.Demo.jsr303.bean;
+package com.liwen.go.demo.jsr303.bean;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ public class User_jsr implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@NotNull(message="{validate.notempty}")
+	@NotNull(message="{hibernate.validate.notEmpty}")
 	//@NotNull
 	private String name;// 名字
 

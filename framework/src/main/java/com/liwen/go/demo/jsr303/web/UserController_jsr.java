@@ -1,4 +1,4 @@
-package com.liwen.go.module.Demo.jsr303.web.exception;
+package com.liwen.go.demo.jsr303.web;
 
 import javax.validation.Valid;
 
@@ -7,7 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.liwen.go.module.Demo.jsr303.bean.User_jsr;
+import com.liwen.go.demo.jsr303.bean.User_jsr;
 
 @Controller
 public class UserController_jsr {

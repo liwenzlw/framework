@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:lang="http://www.springframework.org/schema/lang" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.3.xsd">
+
+	<!-- #测试TaskExecutorExample -->
+	<!-- <bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5" />
+		<property name="maxPoolSize" value="10" />
+		<property name="queueCapacity" value="25" />
+	</bean>
+	<bean id="taskExecutorExample" class="com.liwen.go.module.Demo.task.TaskExecutorExample">
+		<constructor-arg ref="taskExecutor" />
+	</bean>
+
+	<bean
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="taskExecutorExample" />
+		<property name="targetMethod" value="printMessages" />
+	</bean>
+	<bean
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="taskExecutorExample" />
+		<property name="targetMethod" value="printMessages" />
+	</bean> -->
+	<!-- /测试TaskExecutorExample -->
+	
+	<!-- #测试@async -->
+	<!-- <bean
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="async_Scheduled_B" />
+		<property name="targetMethod" value="testAsync" />
+	</bean> -->
+	<!-- /测试@async -->
+
+
+
+	<!-- #启动@async和@schedule注解 -->
+	<task:annotation-driven executor="myExecutor" 
+		scheduler="myScheduler" />
+	<task:executor id="myExecutor" pool-size="5" />
+	<task:scheduler id="myScheduler" pool-size="10" />
+	<!-- /启动@async和@schedule注解 -->
+</beans>

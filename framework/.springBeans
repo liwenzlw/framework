@@ -7,13 +7,13 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/main/resources/spring-context-base.xml</config>
 		<config>src/main/resources/spring-context-datasource.xml</config>
-		<config>src/main/resources/spring-context-mybatis.xml</config>
 		<config>src/main/resources/spring-mvc.xml</config>
-		<config>src/main/resources/spring-context-jsr303.xml</config>
+		<config>src/main/resources_demo/spring-context-base.xml</config>
+		<config>src/main/resources_demo/spring-context-mybatis.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/spring-context-task.xml</config>
 		<config>src/main/resources/spring-context-i18n.xml</config>
 		<config>src/main/resources/spring-context-shiro.xml</config>
 	</autoconfigs>

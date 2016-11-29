@@ -5,14 +5,12 @@ import javax.sql.DataSource;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import com.liwen.go.module.authz.bean.Permission;
 import com.liwen.go.module.authz.bean.Role;
@@ -64,13 +62,56 @@ public class AuthzTest {
 	protected Permission p3;
 	protected Role r1;
 	protected Role r2;
-	protected User u1;
-	protected User u2;
-	protected User u3;
-	protected User u4;
+	protected User u1 = new User("zhang", password);
+	protected User u2 = new User("li", password);
+	protected User u3 = new User("wu", password);
+	protected User u4 = new User("wang", password);
 
-	@Before
+	//@Before
 	public void setUp() {
+		initDatabase();
+	}
+
+	@Test
+	public void testLogin() {
+		Subject subject = SecurityUtils.getSubject();
+		UsernamePasswordToken token = new UsernamePasswordToken(u1.getUsername(), password);
+		subject.login(token);
+
+		Assert.assertTrue(subject.isAuthenticated());
+		subject.checkRole("admin");
+		subject.checkPermission("user:create");
+
+		userService.changePassword(u1.getId(), password + "1");
+		userRealm.clearCache(subject.getPrincipals());
+
+		token = new UsernamePasswordToken(u1.getUsername(), password + "1");
+		subject.login(token);
+	}
+	@Test
+	public void testShiroCache() {
+		Subject subject = SecurityUtils.getSubject();
+		UsernamePasswordToken token = new UsernamePasswordToken(u1.getUsername(), password);
+		subject.login(token);
+		
+		Assert.assertTrue(subject.isAuthenticated());
+		
+//		userService.changePassword(u1.getId(), password + "1");
+//		userRealm.clearCache(subject.getPrincipals());
+		
+		token = new UsernamePasswordToken(u1.getUsername(), password + "1");
+		subject.login(token);
+	}
+
+	/**
+	 * 初始化数据库环境
+	 */
+	@Test
+	public void testLoadEnv() {
+
+	}
+	
+	private void initDatabase(){
 		jdbcTemplate.update("delete from sys_users");
 		jdbcTemplate.update("delete from sys_roles");
 		jdbcTemplate.update("delete from sys_permissions");
@@ -98,10 +139,6 @@ public class AuthzTest {
 		roleService.correlationPermissions(r2.getId(), p2.getId());
 
 		// 4、新增用户
-		u1 = new User("zhang", password);
-		u2 = new User("li", password);
-		u3 = new User("wu", password);
-		u4 = new User("wang", password);
 		u4.setLocked(Boolean.TRUE);
 		userService.createUser(u1);
 		userService.createUser(u2);
@@ -109,32 +146,5 @@ public class AuthzTest {
 		userService.createUser(u4);
 		// 5、关联用户-角色
 		userService.correlationRoles(u1.getId(), r1.getId());
-
 	}
-
-	@Test
-	public void testLogin() {
-		Subject subject = SecurityUtils.getSubject();
-		UsernamePasswordToken token = new UsernamePasswordToken(u1.getUsername(), password);
-		subject.login(token);
-
-		Assert.assertTrue(subject.isAuthenticated());
-		subject.checkRole("admin");
-		subject.checkPermission("user:create");
-
-		userService.changePassword(u1.getId(), password + "1");
-		userRealm.clearCache(subject.getPrincipals());
-
-		token = new UsernamePasswordToken(u1.getUsername(), password + "1");
-		subject.login(token);
-	}
-
-	/**
-	 * 初始化数据库环境
-	 */
-	@Test
-	public void testLoadEnv() {
-
-	}
-
 }

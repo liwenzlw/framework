@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liwen.go.module.Demo.email.dao.MailMonitorDao">
+
+	<resultMap type="MailMonitor" id="baseResultMap">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="monitor_sql" property="sql" jdbcType="VARCHAR" />
+		<result column="tip" property="tip" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="selectMonitorItems" resultMap="baseResultMap">
+		select
+		id,monitor_sql,tip from t_mail_monitor where useable='y'
+	</select>
+
+	<select id="selectWarnParamsByMonitorSql" resultType="map"
+		parameterType="map">
+		${sql}
+	</select>
+
+	<select id="selectSender" resultType="Sender">
+		select
+		username,password,name,hostname,smtpport
+		from t_mail_sender where
+		useable='y'
+		LIMIT 0,1
+	</select>
+	<select id="selectReceivers" resultType="string">
+		select username from
+		t_mail_receiver where useable='y'
+	</select>
+
+</mapper>

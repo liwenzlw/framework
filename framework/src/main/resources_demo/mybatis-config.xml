@@ -45,6 +45,8 @@
 		<typeAlias type="com.liwen.go.module.authz.bean.User" alias="User"/>
 		<typeAlias type="com.liwen.go.module.authz.bean.Role" alias="Role"/>
 		<typeAlias type="com.liwen.go.module.authz.bean.Permission" alias="Permission"/>
+		<typeAlias type="com.liwen.go.demo.email.bean.MailMonitor" alias="MailMonitor"/>
+		<typeAlias type="com.liwen.go.demo.email.bean.Sender" alias="Sender"/>
 	</typeAliases>
 	<!-- 插件配置 -->
 

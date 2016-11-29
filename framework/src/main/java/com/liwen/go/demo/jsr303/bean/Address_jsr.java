@@ -1,4 +1,4 @@
-package com.liwen.go.module.Demo.jsr303.bean;
+package com.liwen.go.demo.jsr303.bean;
 
 import java.io.Serializable;
 
