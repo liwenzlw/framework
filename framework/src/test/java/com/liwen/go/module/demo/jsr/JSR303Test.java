@@ -1,4 +1,4 @@
-package com.liwen.go.module.Demo.jsr303;
+package com.liwen.go.module.demo.jsr;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 @ContextConfiguration(locations = { "classpath:spring-context-base.xml", "classpath:spring-context-datasource.xml",
 		"classpath:spring-context-mybatis.xml", "classpath:spring-context-shiro.xml", "classpath:spring-mvc.xml",
-		"classpath:spring-context-i18n.xml", "classpath:spring-context-jsr303.xml" })
+		"classpath:spring-context-i18n.xml" })
 public class JSR303Test {
 	
 	@Autowired

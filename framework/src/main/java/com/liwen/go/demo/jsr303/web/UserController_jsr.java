@@ -17,6 +17,8 @@ public class UserController_jsr {
 	public String jsr303Demo(@Valid User_jsr user,BindingResult br){
 		if(br.hasErrors()) {
 			System.out.println(br.getFieldError("name").getDefaultMessage());
+			System.out.println("测试JSR303:控制层校验失败");
+			return "true";
 		}
 		System.out.println("测试JSR303:控制层校验成功");
 		return "true";
