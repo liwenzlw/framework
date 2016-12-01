@@ -10,7 +10,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.liwen.go.demo.ehcache.DemoEhcache;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:spring-context-base.xml" })
+@ContextConfiguration(locations = { "classpath:spring-context-base.xml", "classpath:spring-context-datasource.xml",
+		"classpath:spring-context-mybatis.xml", "classpath:spring-context-shiro.xml", "classpath:spring-mvc.xml",
+		"classpath:spring-context-i18n.xml","classpath:spring-context-ehcache.xml" })
 public class DemoEhcacheTest {
 
 	@Autowired
