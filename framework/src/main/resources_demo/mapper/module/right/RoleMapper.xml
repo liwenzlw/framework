@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liwen.go.module.rights.mapper.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.liwen.go.module.rights.bean.Role" >
+    <id column="ROLE_ID" property="roleId" jdbcType="INTEGER" />
+    <result column="ROLE_NAME" property="roleName" jdbcType="VARCHAR" />
+    <result column="MENU_RIGHTS" property="menuRights" jdbcType="VARCHAR" />
+    <result column="GRID_ADD_RIGHTS" property="gridAddRights" jdbcType="VARCHAR" />
+    <result column="GRID_DEL_RIGHTS" property="gridDelRights" jdbcType="VARCHAR" />
+    <result column="GRID_UPDATE_RIGHTS" property="gridUpdateRights" jdbcType="VARCHAR" />
+    <result column="GRID_READ_RIGHTS" property="gridReadRights" jdbcType="VARCHAR" />
+    <result column="BUTTON_RIGHTS" property="buttonRights" jdbcType="VARCHAR" />
+    <result column="ON_OFF_RIGHTS" property="onOffRights" jdbcType="VARCHAR" />
+    <result column="GROUP_ID" property="groupId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ROLE_ID, ROLE_NAME, MENU_RIGHTS, GRID_ADD_RIGHTS, GRID_DEL_RIGHTS, GRID_UPDATE_RIGHTS, 
+    GRID_READ_RIGHTS, BUTTON_RIGHTS, ON_OFF_RIGHTS, GROUP_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from sys_role
+    where ROLE_ID = #{roleId,jdbcType=INTEGER}
+  </select>
+</mapper>
