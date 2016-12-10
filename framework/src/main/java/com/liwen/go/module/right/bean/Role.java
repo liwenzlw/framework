@@ -1,4 +1,4 @@
-package com.liwen.go.module.rights.bean;
+package com.liwen.go.module.right.bean;
 
 /**
  * 系统角色
@@ -105,5 +105,13 @@ public class Role {
 
 	public void setGroupId(Integer groupId) {
 		this.groupId = groupId;
+	}
+
+	@Override
+	public String toString() {
+		return "Role [roleId=" + roleId + ", roleName=" + roleName + ", menuRights=" + menuRights + ", gridAddRights="
+				+ gridAddRights + ", gridDelRights=" + gridDelRights + ", gridUpdateRights=" + gridUpdateRights
+				+ ", gridReadRights=" + gridReadRights + ", buttonRights=" + buttonRights + ", onOffRights="
+				+ onOffRights + ", groupId=" + groupId + "]";
 	}
 }

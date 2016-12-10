@@ -4,4 +4,4 @@
  * @author jimboi
  *
  */
-package com.liwen.go.module.rights;
+package com.liwen.go.module.right;

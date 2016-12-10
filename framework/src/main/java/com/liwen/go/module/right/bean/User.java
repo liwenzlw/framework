@@ -1,4 +1,4 @@
-package com.liwen.go.module.rights.bean;
+package com.liwen.go.module.right.bean;
 
 /**
  * 系统用户
@@ -145,5 +145,14 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userUsername=" + userUsername + ", userName=" + userName
+				+ ", userPassword=" + userPassword + ", userIdentifier=" + userIdentifier + ", userPhone=" + userPhone
+				+ ", userEmail=" + userEmail + ", userSkin=" + userSkin + ", lastLogin=" + lastLogin + ", userIp="
+				+ userIp + ", userSalt=" + userSalt + ", isLock=" + isLock + ", userQq=" + userQq + ", role=" + role
+				+ "]";
 	}
 }

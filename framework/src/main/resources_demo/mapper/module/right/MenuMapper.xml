@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.liwen.go.module.rights.mapper.MenuMapper" >
-  <resultMap id="BaseResultMap" type="com.liwen.go.module.rights.bean.Menu" >
-    <id column="MENU_ID" property="menuId" jdbcType="INTEGER" />
-    <result column="MENU_NAME" property="menuName" jdbcType="VARCHAR" />
-    <result column="MENU_URL" property="menuUrl" jdbcType="VARCHAR" />
-    <result column="PARENT_ID" property="parentId" jdbcType="INTEGER" />
-    <result column="MENU_ORDER" property="menuOrder" jdbcType="INTEGER" />
-    <result column="MENU_ICON" property="menuIcon" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    MENU_ID, MENU_NAME, MENU_URL, PARENT_ID, MENU_ORDER, MENU_ICON
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 'false' as QUERYID,
-    <include refid="Base_Column_List" />
-    from sys_menu
-    where MENU_ID = #{menuId,jdbcType=INTEGER}
-  </select>
+<mapper namespace="com.liwen.go.module.right.mapper.MenuDao">
+	<resultMap id="BaseResultMap" type="com.liwen.go.module.right.bean.Menu">
+		<id column="MENU_ID" property="menuId" jdbcType="INTEGER" />
+		<result column="MENU_NAME" property="menuName" jdbcType="VARCHAR" />
+		<result column="MENU_URL" property="menuUrl" jdbcType="VARCHAR" />
+		<result column="PARENT_ID" property="parentId" jdbcType="INTEGER" />
+		<result column="MENU_ORDER" property="menuOrder" jdbcType="INTEGER" />
+		<result column="MENU_ICON" property="menuIcon" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		MENU_ID, MENU_NAME, MENU_URL, PARENT_ID, MENU_ORDER, MENU_ICON
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from sys_menu
+		where MENU_ID = #{menuId,jdbcType=INTEGER}
+	</select>
+	<!-- 查找所有的菜单 -->
+	<select id="selectAllMenus" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sys_menu
+	</select>
 </mapper>

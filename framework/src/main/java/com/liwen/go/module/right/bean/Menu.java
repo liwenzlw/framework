@@ -1,4 +1,4 @@
-package com.liwen.go.module.rights.bean;
+package com.liwen.go.module.right.bean;
 
 /**
  * 界面侧边栏菜单

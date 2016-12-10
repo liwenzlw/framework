@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.liwen.go.module.rights.mapper.RoleMapper" >
-  <resultMap id="BaseResultMap" type="com.liwen.go.module.rights.bean.Role" >
+<mapper namespace="com.liwen.go.module.right.mapper.RoleDao" >
+  <resultMap id="BaseResultMap" type="com.liwen.go.module.right.bean.Role" >
     <id column="ROLE_ID" property="roleId" jdbcType="INTEGER" />
     <result column="ROLE_NAME" property="roleName" jdbcType="VARCHAR" />
     <result column="MENU_RIGHTS" property="menuRights" jdbcType="VARCHAR" />
@@ -18,7 +18,7 @@
     GRID_READ_RIGHTS, BUTTON_RIGHTS, ON_OFF_RIGHTS, GROUP_ID
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 'false' as QUERYID,
+    select
     <include refid="Base_Column_List" />
     from sys_role
     where ROLE_ID = #{roleId,jdbcType=INTEGER}

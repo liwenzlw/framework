@@ -19,7 +19,7 @@
 	<!-- 2. 配置mybatis扫描器： MapperScannerConfigurer -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- 扫描com.txstar.dao这个包以及它的子包下的所有映射接口类 -->
-		<property name="basePackage" value="com.liwen.go.module.authz.mapper;com.liwen.go.demo.email.dao" />
+		<property name="basePackage" value="com.liwen.go" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 </beans>
