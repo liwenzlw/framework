@@ -265,7 +265,7 @@
 					<span class="user-info">
 					<small><spring:message code="navbar.welcome"/></small> 
 					<shiro:user>
-						<shiro:principal/>
+						<shiro:principal property="userName"/>
 					</shiro:user>
 					</span> 
 					<i class="ace-icon fa fa-caret-down"></i>
