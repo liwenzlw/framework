@@ -1,12 +1,17 @@
 package com.liwen.go.module.right.bean;
 
+import java.io.Serializable;
+
 /**
  * 系统用户
  * 
  * @author jimboi
  *
  */
-public class User {
+public class User implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	private Integer userId;// 用户id
 
 	private String userUsername;// 用户登录名
@@ -29,11 +34,19 @@ public class User {
 
 	private String userSalt;// 盐
 
-	private Byte isLock;// 锁定标识符
+	private Byte isLock = 1;// 锁定标识符(默认锁定)
 
 	private String userQq;// QQ
 
 	private Role role;// 角色对象
+
+	public User() {
+	}
+	public User(String userUsername, String password, String email) {
+		this.userUsername = userUsername;
+		this.userPassword = password;
+		this.userEmail = email;
+	}
 
 	public Integer getUserId() {
 		return userId;
@@ -122,7 +135,7 @@ public class User {
 	public void setUserSalt(String userSalt) {
 		this.userSalt = userSalt == null ? null : userSalt.trim();
 	}
-
+	
 	public Byte getIsLock() {
 		return isLock;
 	}

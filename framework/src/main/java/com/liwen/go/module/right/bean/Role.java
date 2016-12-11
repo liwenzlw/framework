@@ -1,12 +1,17 @@
 package com.liwen.go.module.right.bean;
 
+import java.io.Serializable;
+
 /**
  * 系统角色
  * 
  * @author jimboi
  *
  */
-public class Role {
+public class Role implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	private Integer roleId;
 
 	private String roleName;// 角色名

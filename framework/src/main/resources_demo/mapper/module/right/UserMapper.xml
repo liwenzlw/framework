@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.liwen.go.module.right.mapper.UserDao">
+<mapper namespace="com.liwen.go.module.right.mapper.UserMapper">
 	<resultMap id="BaseResultMap" type="com.liwen.go.module.right.bean.User">
 		<id column="USER_ID" property="userId" jdbcType="INTEGER" />
 		<result column="USER_USERNAME" property="userUsername"
@@ -19,7 +19,7 @@
 		<result column="IS_LOCK" property="isLock" jdbcType="TINYINT" />
 		<result column="USER_QQ" property="userQq" jdbcType="CHAR" />
 		<association property="role"
-			select="com.liwen.go.module.right.mapper.RoleDao.selectByPrimaryKey"
+			select="com.liwen.go.module.right.mapper.RoleMapper.selectByPrimaryKey"
 			column="ROLE_ID" />
 	</resultMap>
 	<sql id="Base_Column_List">
@@ -29,10 +29,19 @@
 		USER_SKIN, LAST_LOGIN, USER_IP,
 		USER_SALT, IS_LOCK, USER_QQ,ROLE_ID
 	</sql>
+	<sql id="No_Key_Column_List">
+		USER_USERNAME, USER_NAME, USER_PASSWORD,
+		USER_IDENTIFIER,
+		USER_PHONE,
+		USER_EMAIL,
+		USER_SKIN, LAST_LOGIN, USER_IP,
+		USER_SALT,
+		IS_LOCK, USER_QQ,ROLE_ID
+	</sql>
 	<!-- 通过主键查找用户 -->
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
-		select 
+		select
 		<include refid="Base_Column_List" />
 		from sys_user
 		where USER_ID = #{userId,jdbcType=INTEGER}
@@ -40,9 +49,24 @@
 	<!-- 通过用户登录名查找用户 -->
 	<select id="selectByUsername" resultMap="BaseResultMap"
 		parameterType="java.lang.String">
-		select 
+		select
 		<include refid="Base_Column_List" />
 		from sys_user
 		where USER_USERNAME = #{username,jdbcType=VARCHAR}
 	</select>
+	<!-- 通过用户名查找用户权限 -->
+	<select id="selectRoleByUsername">
+		select
+		<include
+			refid="com.liwen.go.module.right.mapper.RoleMapper.Base_Column_List" />
+		from sys_user t1 join sys_role t2 on t1.ROLE_ID = t2.ROLE_ID where
+		USER_USERNAME=#{username,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 插入一个用户 -->
+	<insert id="insertOneUser" parameterType="com.liwen.go.module.right.bean.User">
+		insert into
+		sys_user(USER_USERNAME,USER_EMAIL,USER_PASSWORD,USER_SALT)
+		values(#{userUsername,jdbcType=VARCHAR},#{userEmail,jdbcType=VARCHAR},#{userPassword,jdbcType=VARCHAR},#{userSalt,jdbcType=VARCHAR})
+	</insert>
 </mapper>

@@ -1,12 +1,17 @@
 package com.liwen.go.module.right.bean;
 
+import java.io.Serializable;
+
 /**
  * 界面侧边栏菜单
  * 
  * @author jimboi
  *
  */
-public class Menu {
+public class Menu implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+
 	private Integer menuId;
 
 	private String menuName;// 菜单名

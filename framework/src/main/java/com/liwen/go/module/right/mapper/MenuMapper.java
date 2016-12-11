@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.liwen.go.module.right.bean.Menu;
 
-public interface MenuDao {
+public interface MenuMapper {
 	Menu selectByPrimaryKey(Integer menuId);
 
 	/**

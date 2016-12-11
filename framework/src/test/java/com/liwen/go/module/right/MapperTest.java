@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.liwen.go.module.right.bean.User;
-import com.liwen.go.module.right.mapper.UserDao;
+import com.liwen.go.module.right.mapper.UserMapper;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context-base.xml", "classpath:spring-context-datasource.xml",
@@ -16,7 +16,7 @@ import com.liwen.go.module.right.mapper.UserDao;
 public class MapperTest {
 	
 	@Autowired
-	private UserDao userMapper;
+	private UserMapper userMapper;
 	
 	@Test
 	public void testMybatisAnnotation(){

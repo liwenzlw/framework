@@ -1,9 +1,9 @@
-package com.liwen.go.module.right.service;
+package com.liwen.go.module.right.mapper;
 
 import com.liwen.go.module.right.bean.Role;
 import com.liwen.go.module.right.bean.User;
 
-public interface UserService {
+public interface UserMapper {
 	User selectByPrimaryKey(Integer userId);
 
 	/**
@@ -25,5 +25,5 @@ public interface UserService {
 	 * @param user
 	 * @return
 	 */
-	Boolean insertOneUser(User user);
+	int insertOneUser(User user);
 }

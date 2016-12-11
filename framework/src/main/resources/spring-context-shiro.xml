@@ -14,22 +14,26 @@
 
 	<!-- 凭证匹配器 -->
 	<bean id="credentialsMatcher"
-		class="com.liwen.go.module.authz.credential.RetryLimitHashedCredentialsMatcher">
-		<constructor-arg ref="shiroCacheManager" />
+		class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
 		<property name="hashAlgorithmName" value="md5" />
 		<property name="hashIterations" value="2" />
 		<property name="storedCredentialsHexEncoded" value="true" />
 	</bean>
 
+	<!-- 权限解析器 -->
+	<bean id="bigIntegerPermissionResolver"
+		class="com.liwen.go.module.right.realm.BigIntegerPermissionResolver" />
+
 	<!-- Realm实现 -->
-	<bean id="userRealm" class="com.liwen.go.module.authz.realm.UserRealm">
+	<bean id="myBigIntegerRealm" class="com.liwen.go.module.right.realm.MyBigIntegerRealm">
 		<property name="userService" ref="userServiceImpl" />
-		<property name="credentialsMatcher" ref="credentialsMatcher" />
 		<property name="cachingEnabled" value="true" />
 		<property name="authenticationCachingEnabled" value="true" />
 		<property name="authenticationCacheName" value="authenticationCache" />
 		<property name="authorizationCachingEnabled" value="true" />
 		<property name="authorizationCacheName" value="authorizationCache" />
+		<property name="permissionResolver" ref="bigIntegerPermissionResolver" />
+		<property name="credentialsMatcher" ref="credentialsMatcher" />
 	</bean>
 
 	<!-- 会话ID生成器 -->
@@ -71,7 +75,7 @@
 
 	<!-- 安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<property name="realm" ref="userRealm" />
+		<property name="realm" ref="myBigIntegerRealm" />
 		<property name="sessionManager" ref="sessionManager" />
 		<property name="cacheManager" ref="shiroCacheManager" />
 	</bean>
@@ -85,36 +89,27 @@
 	</bean>
 
 	<!-- 基于Form表单的身份验证过滤器 -->
-	<!-- <bean id="formAuthenticationFilter"
-		class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
-		<property name="usernameParam" value="username" />
-		<property name="passwordParam" value="password" />
-		<property name="successUrl" value="/views/layout/main.jsp"></property>
-	</bean> -->
+	<!-- <bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter"> 
+		<property name="usernameParam" value="username" /> <property name="passwordParam" 
+		value="password" /> <property name="successUrl" value="/views/layout/main.jsp"></property> 
+		</bean> -->
 	<!-- 基于Form表单的身份验证过滤器 -->
-	<bean id="formAuthenticationFilter"
-		class="com.liwen.go.module.authz.filter.MyFormAuthenticationFilter">
-		<property name="usernameParam" value="username" />
-		<property name="passwordParam" value="password" />
-		<property name="successUrl" value="/views/layout/main.jsp"></property>
-	</bean>
+	<!-- <bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter"> 
+		<property name="successUrl" value="/views/layout/main.jsp"></property> </bean> -->
 
 	<!-- Shiro的Web过滤器 -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/views/page/login.jsp" />
 		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
-		<property name="filters">
-			<util:map>
-				<entry key="authc" value-ref="formAuthenticationFilter" />
-			</util:map>
-		</property>
+		<property name="successUrl" value="/views/layout/main.jsp"></property>
 		<property name="filterChainDefinitions">
 			<value>
 				/views/page/login.jsp = authc
 				/static/** = anon
 				/index.jsp = anon
 				/unauthorized.jsp = anon
+				/login/** = anon
 				/logout = logout
 				/** = user
 			</value>

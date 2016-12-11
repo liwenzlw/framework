@@ -18,7 +18,7 @@
 	<!-- 配置视图解析器 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/page/"></property>
+		<property name="prefix" value="/views/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 
@@ -45,7 +45,7 @@
 	<mvc:annotation-driven validator="validator">
 		<mvc:message-converters register-defaults="true">
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
-				<property name="supportedMediaTypes" value="text/plain;charset=UTF-8"></property>
+				<property name="defaultCharset" value="utf-8" />
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
