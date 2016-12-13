@@ -50,7 +50,7 @@ public class MyBigIntegerRealm extends AuthorizingRealm {
 		if (username == null) {
 			throw new AccountException("Null usernames are not allowed by this realm.");
 		}
-		User user = userService.selectByUsername(username);
+		User user = userService.selectByUserName(username);
 		if(user == null) {
             throw new UnknownAccountException();//没找到帐号
         }

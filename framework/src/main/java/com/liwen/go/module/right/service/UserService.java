@@ -12,12 +12,12 @@ public interface UserService {
 	 * @param username
 	 * @return
 	 */
-	User selectByUsername(String username);
+	User selectByUserName(String userName);
 
 	/**
-	 * 通过用户名查找用户权限
+	 * 通过登录名查找用户权限
 	 */
-	Role selectRoleByUsername(String username);
+	Role selectRoleByUserName(String userName);
 
 	/**
 	 * 插入一个用户

@@ -1,5 +1,6 @@
 package com.liwen.go.module.right.realm;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
 import org.apache.shiro.authz.Permission;
@@ -7,11 +8,20 @@ import org.apache.shiro.authz.Permission;
 /**
  * 基于BigInteger的权限类
  * 
+ * <pre>
+ * 		权限表示：
+ * 			menu:menuId  如：（menu:10）
+ * 			gridAdd:gridId  如：（gridAdd:12）
+ * 			onOff:id  如：（onOff:8）
+ * </pre>
+ * 
  * @author jimboi
  *
  */
-public class BigIntegerPermission implements Permission {
+public class BigIntegerPermission implements Permission,Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private BigInteger menusSumRights;// 菜单总权限
 	private BigInteger gridAddSumRights;// grid添加总权限
 	private BigInteger gridDelSumRights;// grid删除总权限
@@ -32,12 +42,12 @@ public class BigIntegerPermission implements Permission {
 
 	public BigIntegerPermission(String menusSumRights, String gridAddSumRights, String gridDelSumRights,
 			String gridReadSumRights, String gridUpdateSumRights, String onOffSumRights) {
-		this.menusSumRights = new BigInteger(menusSumRights);
-		this.gridAddSumRights = new BigInteger(gridAddSumRights);
-		this.gridDelSumRights = new BigInteger(gridDelSumRights);
-		this.gridUpdateSumRights = new BigInteger(gridUpdateSumRights);
-		this.gridReadSumRights = new BigInteger(gridReadSumRights);
-		this.onOffSumRights = new BigInteger(onOffSumRights);
+		this.menusSumRights = new BigInteger(menusSumRights == null ? "0" : menusSumRights);
+		this.gridAddSumRights = new BigInteger(gridAddSumRights == null ? "0" : gridAddSumRights);
+		this.gridDelSumRights = new BigInteger(gridDelSumRights == null ? "0" : gridDelSumRights);
+		this.gridUpdateSumRights = new BigInteger(gridUpdateSumRights == null ? "0" : gridUpdateSumRights);
+		this.gridReadSumRights = new BigInteger(gridReadSumRights == null ? "0" : gridReadSumRights);
+		this.onOffSumRights = new BigInteger(onOffSumRights == null ? "0" : onOffSumRights);
 	}
 
 	public BigIntegerPermission(String permissionString) {

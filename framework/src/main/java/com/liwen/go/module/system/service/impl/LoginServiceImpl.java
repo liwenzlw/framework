@@ -15,7 +15,7 @@ public class LoginServiceImpl implements LoginService {
 	
 	@Override
 	public boolean register(User user) {
-		User u = userService.selectByUsername(user.getUserUsername());
+		User u = userService.selectByUserName(user.getUserName());
 		if(u == null) {
 			userService.insertOneUser(user);
 			return true;

@@ -124,16 +124,13 @@ jQuery(function($) {
 					// for example in Ace HTML demo version we convert
 					// /ajax/ajax.html#page/gallery to > /ajax/gallery.html and
 					// load it
-					if (path.match(/(\/layout\/main.jsp)/))
-						return path.replace(/(\/layout\/main.jsp)/, '/ajax/'
-										+ hash.replace(/^page\//, '') + '.jsp');
+					if (path.match(/(\/portal\/main)/))
+						return path.replace(/(\/portal\/main)/, '/views/ajax/' + hash.replace(/^page\//, '') + '.jsp');
 				},
-
 				'default_url' : 'page/index'// default hash
 			})
 		}
 	}
-
 	// ///////////////////////////
 
 	function handleScrollbars() {

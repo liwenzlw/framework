@@ -98,7 +98,7 @@
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/views/page/login.jsp" />
 		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
-		<property name="successUrl" value="/views/layout/main.jsp"></property>
+		<property name="successUrl" value="/portal/main"></property>
 		<property name="filters">
 			<util:map>
 				<entry key="authc" value-ref="formAuthenticationFilter" />

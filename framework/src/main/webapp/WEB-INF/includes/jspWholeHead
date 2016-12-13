@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="/WEB-INF/tlds/c.tld"%>
 <%@ taglib prefix="fn" uri="/WEB-INF/tlds/fn.tld" %>
 <%@ taglib prefix="spring" uri="/WEB-INF/tlds/spring.tld"%>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@ taglib prefix="shiro" uri="/WEB-INF/tlds/shiro.tld" %>
 <% String assetsDir = request.getContextPath() + "/static/assets";%>
 <%
 	String basepath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()

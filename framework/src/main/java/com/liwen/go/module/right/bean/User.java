@@ -14,9 +14,9 @@ public class User implements Serializable {
 
 	private Integer userId;// 用户id
 
-	private String userUsername;// 用户登录名
+	private String userName;// 用户名
 
-	private String userName;// 用户名字
+	private String realName;// 真实姓名
 
 	private String userPassword;// 密码
 
@@ -42,8 +42,9 @@ public class User implements Serializable {
 
 	public User() {
 	}
-	public User(String userUsername, String password, String email) {
-		this.userUsername = userUsername;
+
+	public User(String userName, String password, String email) {
+		this.userName = userName;
 		this.userPassword = password;
 		this.userEmail = email;
 	}
@@ -54,22 +55,6 @@ public class User implements Serializable {
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;
-	}
-
-	public String getUserUsername() {
-		return userUsername;
-	}
-
-	public void setUserUsername(String userUsername) {
-		this.userUsername = userUsername == null ? null : userUsername.trim();
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName == null ? null : userName.trim();
 	}
 
 	public String getUserPassword() {
@@ -116,6 +101,22 @@ public class User implements Serializable {
 		return lastLogin;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+
 	public void setLastLogin(String lastLogin) {
 		this.lastLogin = lastLogin == null ? null : lastLogin.trim();
 	}
@@ -135,7 +136,7 @@ public class User implements Serializable {
 	public void setUserSalt(String userSalt) {
 		this.userSalt = userSalt == null ? null : userSalt.trim();
 	}
-	
+
 	public Byte getIsLock() {
 		return isLock;
 	}
@@ -162,10 +163,9 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userUsername=" + userUsername + ", userName=" + userName
-				+ ", userPassword=" + userPassword + ", userIdentifier=" + userIdentifier + ", userPhone=" + userPhone
-				+ ", userEmail=" + userEmail + ", userSkin=" + userSkin + ", lastLogin=" + lastLogin + ", userIp="
-				+ userIp + ", userSalt=" + userSalt + ", isLock=" + isLock + ", userQq=" + userQq + ", role=" + role
-				+ "]";
+		return "User [userId=" + userId + ", userName=" + userName + ", realName=" + realName + ", userPassword="
+				+ userPassword + ", userIdentifier=" + userIdentifier + ", userPhone=" + userPhone + ", userEmail="
+				+ userEmail + ", userSkin=" + userSkin + ", lastLogin=" + lastLogin + ", userIp=" + userIp
+				+ ", userSalt=" + userSalt + ", isLock=" + isLock + ", userQq=" + userQq + ", role=" + role + "]";
 	}
 }

@@ -1,6 +1,8 @@
 package com.liwen.go.module.right.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 界面侧边栏菜单
@@ -9,7 +11,7 @@ import java.io.Serializable;
  *
  */
 public class Menu implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	private Integer menuId;
@@ -23,6 +25,10 @@ public class Menu implements Serializable {
 	private Integer menuOrder;// 菜单顺序编号
 
 	private String menuIcon;// 菜单图标
+
+	private Menu parentMenu;// 父菜单
+	
+	private List<Menu> subMenus = new ArrayList<Menu>();// 子菜单
 
 	public Integer getMenuId() {
 		return menuId;
@@ -70,5 +76,21 @@ public class Menu implements Serializable {
 
 	public void setMenuIcon(String menuIcon) {
 		this.menuIcon = menuIcon == null ? null : menuIcon.trim();
+	}
+
+	public Menu getParentMenu() {
+		return parentMenu;
+	}
+
+	public void setParentMenu(Menu parentMenu) {
+		this.parentMenu = parentMenu;
+	}
+
+	public List<Menu> getSubMenus() {
+		return subMenus;
+	}
+
+	public void setSubMenus(List<Menu> subMenus) {
+		this.subMenus = subMenus;
 	}
 }

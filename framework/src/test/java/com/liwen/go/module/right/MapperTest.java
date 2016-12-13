@@ -19,10 +19,11 @@ public class MapperTest {
 	private UserMapper userMapper;
 	
 	@Test
-	public void testMybatisAnnotation(){
+	public void testMybatisAnnotation() throws InterruptedException{
 		while(true) {
-			User user = userMapper.selectByUsername("zhang");
-			System.out.println(user.toString());
+			User user = userMapper.selectByUserName("zhang");
+			
+			System.out.println(user.getRole());
 		}
 	}
 }
