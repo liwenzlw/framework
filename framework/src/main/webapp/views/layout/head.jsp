@@ -12,6 +12,8 @@
 
 <!-- text fonts -->
 <link rel="stylesheet" href="<%=assetsDir %>/css/ace-fonts.css" />
+<link rel="stylesheet" href="<%=assetsDir %>/css/datepicker.css" />
+<link rel="stylesheet" href="<%=assetsDir %>/css/ui.jqgrid.css" />
 
 <!-- ace styles -->
 <link rel="stylesheet" href="<%=assetsDir %>/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
@@ -23,7 +25,8 @@
 <!--[if lte IE 9]>
   <link rel="stylesheet" href="<%=assetsDir %>/css/ace-ie.css" />
 <![endif]-->
-
+<link rel="stylesheet" href="<%=assetsDir %>/css/jquery-ui.css" />
+<link rel="stylesheet" href="<%=assetsDir %>/css/jquery-ui.theme.css" />
 <!-- ace settings handler -->
 <script src="<%=assetsDir %>/js/ace-extra.js"></script>
 
