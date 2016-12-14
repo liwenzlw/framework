@@ -1,7 +1,5 @@
 <%@ include file="/WEB-INF/includes/jspFragmentHead"%>
 <title>Full Calendar - Ace Admin</title>
-
-<link rel="stylesheet" href="<%=assetsDir %>/css/jquery-ui.custom.css" />
 <link rel="stylesheet" href="<%=assetsDir %>/css/fullcalendar.css" />
 
 <!-- ajax layout which only needs content area -->
@@ -14,6 +12,32 @@
 		</small>
 	</h1>
 </div><!-- /.page-header -->
+<div class="page-header">
+	<button id="organization-add-button" class="btn btn-info btn-sm">
+		<i class="ace-icon fa glyphicon-plus align-top bigger-125"></i> 新增
+	</button>
+</div>
+
+<div id="organization-add-dialog-form" title="Create new user">
+	<form>
+		<fieldset>
+			<label for="name">Name</label> <input type="text" name="name"
+				id="name" value="Jane Smith"
+				class="text ui-widget-content ui-corner-all">
+			<!-- Allow form submission with keyboard without duplicating the dialog button -->
+		</fieldset>
+	</form>
+</div>
+<script>
+	$("#organization-add-dialog-form").dialog({
+		autoOpen : false,
+		modal: true
+	});
+	$("#organization-add-button").click(function() {
+		$("#organization-add-dialog-form").dialog("open");
+	});
+</script>
+
 
 <div class="row">
 	<div class="col-xs-12">

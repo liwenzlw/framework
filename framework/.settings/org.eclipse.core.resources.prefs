@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/login.jsp=UTF-8
+encoding//src/main/webapp/views/ajax/calendar.jsp=UTF-8
 encoding//src/main/webapp/views/ajax/index.jsp=UTF-8
 encoding//src/main/webapp/views/ajax/organization.jsp=UTF-8
 encoding//src/main/webapp/views/layout/breadcrumbs.jsp=UTF-8

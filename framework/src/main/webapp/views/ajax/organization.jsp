@@ -8,11 +8,6 @@
 		<i class="ace-icon fa glyphicon-plus align-top bigger-125"></i> 新增
 	</button>
 </div>
-
-
-
-
-
 <div id="organization-add-dialog-form" title="Create new user">
 	<form>
 		<fieldset>
@@ -24,10 +19,14 @@
 	</form>
 </div>
 <script>
-$( "#organization-add-dialog-form" ).dialog({ autoOpen: false });
-$( "#organization-add-button" ).click(function() {
-  $( "#organization-add-dialog-form" ).dialog( "open" );
-});
+	$("#organization-add-dialog-form").dialog({
+		autoOpen : false,
+		modal : true,
+		resizable : false
+	});
+	$("#organization-add-button").click(function() {
+		$("#organization-add-dialog-form").dialog("open");
+	});
 </script>
 
 
